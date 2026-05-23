@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>С Днём Рождения, Зайка! 🌹</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/enhance.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌹</text></svg>" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     ENVELOPE INTRO POPUP
+══════════════════════════════════════════ -->
+<div id="envelope-overlay">
+  <div class="env-stage">
+    <p class="env-hint">для тебя</p>
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <p class="env-letter-text">Открой меня —<br>тут что-то особенное</p>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap" id="env-flap">
+        <div class="env-seal">L</div>
+      </div>
+    </div>
+    <p class="env-cta" id="env-cta">нажми на конверт</p>
+  </div>
+</div>
+
+<!-- Фоновые частицы -->
+<canvas id="particles-canvas"></canvas>
+<!-- Конфетти -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Кнопка музыки -->
+<button id="audio-btn" title="Музыка">🎵</button>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 1 — HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('photos/hero-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('photos/hero-2.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('photos/hero-3.jpg')"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-subtitle">В этот день мир стал лучше ровно на одну тебя</p>
+	    <p class="hero-subtitle">Это тот самый день, когда мир стал ярче ✨</p>
+    <h1 class="hero-title">
+    <span>  С Днём<br> 
+      Рождения,</span>
+    </h1>
+    <div class="hero-age">37</div>
+    <p class="hero-tagline">Моя Зайка. Моя Любовь. ❤</p>
+  </div>
+
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 2 — СЧЁТЧИК
+══════════════════════════════════════════ -->
+<section id="counter">
+  <div class="container reveal">
+    <p class="section-label">Ты украшаешь этот мир уже...</p>
+    <h2 class="section-title">Каждая секунда — бесценна</h2>
+
+    <div class="counter-grid">
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-years">37</span>
+        <span class="counter-label">лет</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-months">00</span>
+        <span class="counter-label">месяцев</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-days">00</span>
+        <span class="counter-label">дней</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-hours">00</span>
+        <span class="counter-label">часов</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-mins">00</span>
+        <span class="counter-label">минут</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" id="cnt-secs">00</span>
+        <span class="counter-label">секунд</span>
+      </div>
+    </div>
+
+    <p class="counter-joke">И каждую секунду ты всё равно права 😄</p>
+
+    <!-- ─ Funny units ─ -->
+  <!--  <div class="counter-fun">
+      <div class="cf-item"><span class="cf-num">≈ 27 000</span><span class="cf-lbl">чашек кофе</span></div>
+      <div class="cf-item"><span class="cf-num">∞</span><span class="cf-lbl">сказано «потом-потом»</span></div>
+      <div class="cf-item"><span class="cf-num">0</span><span class="cf-lbl">опозданий (по версии Любы)</span></div>
+     <!-- <div class="cf-item"><span class="cf-num">37</span><span class="cf-lbl">причин любить тебя ниже ↓</span></div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 3 — ПИСЬМО + ВИДЕО 1
+══════════════════════════════════════════ -->
+<section id="letter">
+  <div class="container">
+    <div class="letter-wrap reveal">
+<div style="text-align:center">
+        <p class="section-label">Из Украины — в Валенсию</p>
+        <h2 class="section-title">Письмо для тебя</h2>
+      </div>
+      <div class="letter-paper" style="margin-top:40px">
+        <!-- Мини-карта Одесса → Валенсия -->
+        <div class="letter-map">
+          <svg viewBox="0 0 420 90" class="letter-map-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="curve-text" d="M 60 75 Q 210 10 360 75"/>
+            </defs>
+
+            <!-- Пунктирная изогнутая линия -->
+            <path d="M 60 60 Q 210 5 360 60"
+                  stroke="#c9637a" stroke-width="1.5"
+                  fill="none"
+                  stroke-dasharray="6 5"
+                  stroke-linecap="round"/>
+
+            <!-- Изогнутая надпись по кривой -->
+            <text font-family="Cormorant Garamond, serif"
+                  font-size="13" font-style="italic"
+                  fill="#c9a96e" letter-spacing="1.5">
+              <textPath href="#curve-text" startOffset="50%" text-anchor="middle">
+                2 700 км · и всё равно рядом
+              </textPath>
+            </text>
+
+            <!-- Точка Одесса -->
+            <circle cx="60" cy="60" r="7" fill="#c9637a"/>
+            <circle cx="60" cy="60" r="12" fill="none" stroke="#c9637a" stroke-width="1.5" opacity="0.4">
+              <animate attributeName="r" from="7" to="20" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <text x="60" y="80" text-anchor="middle"
+                  font-family="Cormorant Garamond, serif"
+                  font-size="12" font-style="italic"
+                  fill="#8a6070">Одесса 🇺🇦</text>
+
+            <!-- Точка Валенсия -->
+            <circle cx="360" cy="60" r="7" fill="#c9a96e"/>
+            <circle cx="360" cy="60" r="12" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.4">
+              <animate attributeName="r" from="7" to="20" dur="2s" begin="1s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+            <text x="360" y="80" text-anchor="middle"
+                  font-family="Cormorant Garamond, serif"
+                  font-size="12" font-style="italic"
+                  fill="#8a6070">Валенсия 🇪🇸</text>
+
+            <!-- Летящее сердечко -->
+            <text font-size="14" fill="#c9637a">❤
+              <animateMotion dur="5s" repeatCount="indefinite">
+                <mpath href="#curve-text"/>
+              </animateMotion>
+            </text>
+          </svg>
+        </div>
+
+        <div class="letter-text" id="letter-text-container">
+          <p id="letter-p1"><span class="tw-text"></span><span class="tw-cursor">|</span></p>
+          <p id="letter-p2" style="display:none"><span class="tw-text"></span><span class="tw-cursor" style="display:none">|</span></p>
+          <p id="letter-p3" style="display:none"><span class="tw-text"></span><span class="tw-cursor" style="display:none">|</span></p>
+          <p id="letter-p4" style="display:none"><span class="tw-text"></span><span class="tw-cursor" style="display:none">|</span></p>
+          <p id="letter-p5" class="letter-ps" style="display:none"><span class="tw-text"></span><span class="tw-cursor" style="display:none">|</span></p>
+        </div>
+
+        <div class="letter-sign" id="letter-sign" style="opacity:0">Твой Максим ❤</div>
+      </div>
+
+      <div style="text-align:center; margin-top:20px; opacity:0; transition: opacity 1s ease;" id="distance-badge-wrap">
+        <span class="distance-badge">
+        <!--  🇺🇦 Украина &nbsp;→&nbsp; 🇪🇸 Валенсия &nbsp;·&nbsp; 2 700 км любви-->
+        </span>
+      </div>
+    </div>
+
+    <!-- ВИДЕО 1
+    <div class="video-block reveal" style="margin-top:60px">
+      <p class="video-label">🎥 Какая она?</p>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="video/video1.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+      </div>
+    </div>  -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 3.5 — КАКАЯ ОНА (парадоксы)
+══════════════════════════════════════════ -->
+<section id="who-is-she">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label"><!-- Портрет в парадоксах --></p>
+      <h2 class="section-title">Какая она?</h2>
+    </div>
+	
+	   <!-- ВИДЕО 1 -->
+    <div class="video-block reveal" style="margin-top:60px">
+      <p class="video-label"></p>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="video/video1.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+      </div>
+    </div>
+
+    <div class="traits-grid reveal">
+      <div class="trait-card">
+        <div class="trait-icon">⏰</div>
+        <h3 class="trait-title">Опаздывает везде —</h3>
+        <p class="trait-text">но никогда не опаздывает любить. И появляется ровно тогда, когда без неё уже невозможно.</p>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🕰</div>
+        <h3 class="trait-title">Говорит «потом-потом» —</h3>
+        <p class="trait-text">а делает раньше всех. И обязательно лучше всех. Магия, которую невозможно объяснить.</p>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🛡</div>
+        <h3 class="trait-title">Упрямая до невозможности —</h3>
+        <p class="trait-text">и именно поэтому всё, что важно, у неё получается. «Всруся, но не покорюся» — это не шутка, это устав.</p>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🌹</div>
+        <h3 class="trait-title">Вредничает —</h3>
+        <p class="trait-text">а потом обнимает так, что хочется простить всё, что было, и согласиться на всё, что будет.</p>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">😄</div>
+        <h3 class="trait-title">Весёлая и непредсказуемая —</h3>
+        <p class="trait-text">Ты весёлая — непредсказуемо, внезапно, заразительно. Твой смех — лучший звук в этом мире, способный мгновенно исправить любой самый тяжелый день.</p>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🧠</div>
+        <h3 class="trait-title">Мудрая... —</h3>
+        <p class="trait-text">Даже когда мастерски маскируешь это под «ой, я не знаю, решай сам».</p>
+      </div>
+    </div>
+
+    <!-- <div class="she-loves reveal">
+      <h3 class="she-loves-title">Что она любит</h3>
+      <div class="she-loves-grid">
+        <div class="she-love-item">☕ Кофе — так, как другие любят людей</div>
+        <div class="she-love-item">🌶 Острую еду. Очень. Ещё острее</div>
+        <div class="she-love-item">🍽 Болгарскую кухню</div>
+        <div class="she-love-item">🛍 Магазины «просто посмотреть»</div>
+        <div class="she-love-item">🏺 Новую посуду (она была нужна)</div>
+        <div class="she-love-item">⏳ Максимально оттягивать время</div>
+        <div class="she-love-item">💼 Работу — больше самолёта</div>
+        <div class="she-love-item">😴 Ничего не делать — одновременно со всем</div>
+      </div>
+      <p class="she-loves-outro">
+        Иногда она бывает как маленький ребёнок.<br>
+        И это — одна из моих любимых её версий. ❤
+      </p>
+      <p class="she-loves-outro" style="margin-top:12px">
+        Она опаздывает везде. Абсолютно везде.<br>
+        Но когда она появляется — стоило подождать.
+      </p>
+    </div>
+  </div> -->
+</section> 
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 3.7 — ИНСТРУКЦИЯ ПО ЭКСПЛУАТАЦИИ
+══════════════════════════════════════════ 
+<section id="manual">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">Tech Specs</p>
+      <h2 class="section-title">Инструкция по эксплуатации Любы</h2>
+      <p class="manual-intro">v 37.0 · только для авторизованного мужа</p>
+    </div>
+
+    <div class="manual-grid reveal">
+      <div class="spec-card">
+        <p class="spec-label">Топливо</p>
+        <p class="spec-value">Кофе 95+ · острый перец · комплименты</p>
+      </div>
+      <div class="spec-card">
+        <p class="spec-label">Перезагрузка</p>
+        <p class="spec-value">Шопинг «просто посмотреть» + 1 шт. новой посуды</p>
+      </div>
+      <div class="spec-card">
+        <p class="spec-label">Не работает при</p>
+        <p class="spec-value">Отсутствии петрушки, укропа и грибов</p>
+      </div>
+      <div class="spec-card">
+        <p class="spec-label">Режим «отдых»</p>
+        <p class="spec-value">Ничего не делать — одновременно со всем</p>
+      </div>
+      <div class="spec-card">
+        <p class="spec-label">Допустимая нагрузка</p>
+        <p class="spec-value">∞ (тестировалось 8 лет — без поломок)</p>
+      </div>
+      <div class="spec-card">
+        <p class="spec-label">Гарантия</p>
+        <p class="spec-value">Пожизненная. Продлевается мужем ежедневно ❤</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 4 — ТАЙМЛАЙН
+══════════════════════════════════════════ -->
+<section id="timeline">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">Восемь лет вместе</p>
+      <h2 class="section-title">Наша история</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-1.jpg" alt="Первое фото вместе" loading="lazy" />
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">8 декабря 2018</p>
+          <h3 class="tl-title">Всё началось...</h3>
+          <p class="tl-desc">Наше первое совместное фото. Мы ещё не знали, что это — навсегда. Но море знало.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-2.jpg" alt="Роспись в ЗАГСе" loading="lazy" />
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">12 июня 2021</p>
+          <h3 class="tl-title">Мы сказали «да»</h3>
+          <p class="tl-desc">Официально. Печать поставлена. Обратного пути нет — и слава Богу. 💍</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-3.jpg" alt="Свадьба" loading="lazy" /> 		  
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">26 июня 2021</p>
+          <h3 class="tl-title">Праздник мечты</h3>
+          <p class="tl-desc">Ты продумала эту свадьбу до последней салфетки, до мельчайшей искорки в декоре. Ты создала сказку, которая до сих пор греет душу.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-4.jpg" alt="Вместе в поле" loading="lazy" />
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">Почти 8 лет</p>
+          <h3 class="tl-title">Вредная. Упрямая. Моя.</h3>
+          <p class="tl-desc">Иногда бесишь до безумия. Каждую секунду восхищаешь. Никогда не надоедаешь. Безумно люблю тебя — именно такой, настоящей и неповторимой. ❤</p>
+        </div>
+      </div>
+	  
+	        <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-3-1.jpg" alt="Свадьба" loading="lazy" /> 		  
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">Мечты должны сбываться</p>
+          <h3 class="tl-title">  ...  ✈️</h3>
+          <p class="tl-desc">и будут сбываться</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-photo">
+          <img src="photos/timeline-4-1.jpg" alt="Вместе в поле" loading="lazy" />
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">Почти 8 лет</p>
+          <h3 class="tl-title">Моя.</h3>
+          <p class="tl-desc">Люблю тебя...❤</p>
+        </div>
+      </div>
+
+      <!-- 5 — Будущее -->
+      <div class="tl-item tl-future reveal">
+        <div class="tl-dot tl-dot-future">∞</div>
+        <div class="tl-photo">
+          <div class="tl-future-frame">
+            <span class="tl-future-q">?</span>
+            <p class="tl-future-hint">Здесь будет<br>наше следующее фото</p>
+          </div>
+        </div>
+        <div class="tl-text">
+          <p class="tl-date">∞ · Будущее</p>
+          <h3 class="tl-title">Дальше — больше</h3>
+          <p class="tl-desc">Здесь будет наша следующая история.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 4.5 — КАРТА 2700 КМ
+══════════════════════════════════════════ -->
+<section id="map">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label"><!-- Геометрия любви --></p>
+      <h2 class="section-title">2 700 км — это ничего</h2>
+      <p class="map-intro">Когда сердце знает дорогу</p>
+    </div>
+
+    <div class="map-wrap reveal">
+      <svg viewBox="0 0 800 350" class="map-svg" aria-hidden="true">
+        <!-- декоративный «глобус» -->
+        <defs>
+          <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#c9637a"/>
+            <stop offset="100%" stop-color="#c9a96e"/>
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- кривая Одесса → Валенсия -->
+        <path id="route" d="M 640 110 Q 400 -40 160 230"
+              stroke="url(#pathGrad)" stroke-width="3"
+              fill="none" stroke-dasharray="8 6"
+              stroke-linecap="round" filter="url(#glow)"/>
+
+        <!-- Одесса (правая точка) -->
+        <g transform="translate(640,110)">
+          <circle r="10" fill="#c9637a"/>
+          <circle r="18" fill="none" stroke="#c9637a" stroke-width="2" opacity="0.6">
+            <animate attributeName="r" from="10" to="28" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.7" to="0" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <text y="-22" text-anchor="middle" fill="#fdf8f3" font-family="Playfair Display, serif" font-size="18" font-style="italic">Одесса 🇺🇦</text>
+          <text y="32" text-anchor="middle" fill="#e8a0b0" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic">я тут — жду</text>
+        </g>
+
+        <!-- Валенсия (левая точка) -->
+        <g transform="translate(160,230)">
+          <circle r="10" fill="#c9a96e"/>
+          <circle r="18" fill="none" stroke="#c9a96e" stroke-width="2" opacity="0.6">
+            <animate attributeName="r" from="10" to="28" dur="2s" begin="1s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.7" to="0" dur="2s" begin="1s" repeatCount="indefinite"/>
+          </circle>
+          <text y="-22" text-anchor="middle" fill="#fdf8f3" font-family="Playfair Display, serif" font-size="18" font-style="italic">Валенсия 🇪🇸</text>
+          <text y="32" text-anchor="middle" fill="#e8d5b0" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic">ты тут — сияешь</text>
+        </g>
+
+        <!-- Летающие сердечки вдоль маршрута -->
+        <text class="route-heart" font-size="22" fill="#e8a0b0">❤
+          <animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+        </text>
+        <text class="route-heart" font-size="18" fill="#c9637a">💕
+          <animateMotion dur="6s" begin="2s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+        </text>
+        <text class="route-heart" font-size="20" fill="#c9a96e">🌹
+          <animateMotion dur="6s" begin="4s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion>
+        </text>
+
+        <!-- подпись -->
+        <text x="400" y="195" text-anchor="middle" fill="#fdf8f3" font-family="Cormorant Garamond, serif" font-size="22" font-style="italic">2 700 км</text>
+      </svg>
+
+      <p class="map-caption">Каждое сердечко — это «думаю о тебе».<br>Они никогда не останавливаются. ❤</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 5 — ГАЛЕРЕЯ
+══════════════════════════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">Моменты</p>
+      <h2 class="section-title">Она такая</h2>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-card">
+        <img src="photos/gallery-1.jpg" alt="Море и кофе" loading="lazy" />
+        <div class="gallery-caption"><p>Кофе + море = идеальное утро.<br> </p></div>
+      </div>
+      <div class="gallery-card">
+        <img src="photos/gallery-5.jpg" alt="Розы и кот" loading="lazy" />
+        <div class="gallery-caption"><p>Когда дарят цветы — это праздник.<br>Даже кот пришёл поздравить 🌹</p></div>
+      </div>
+      <div class="gallery-card">
+        <img src="photos/gallery-3.jpg" alt="Одесса" loading="lazy" />
+        <div class="gallery-caption"><p>Львов.<br>Не думая о работе 💼</p></div>
+      </div>
+	        <div class="gallery-card">
+        <img src="photos/gallery-6.jpg" alt="37 лет" loading="lazy" />
+        <div class="gallery-caption"><p>37 — это не возраст.<br>Это уровень ✨</p></div>
+      </div>
+      <div class="gallery-card">
+        <img src="photos/gallery-2.jpg" alt="Момент покоя" loading="lazy" />
+        <div class="gallery-caption"><p>Момент покоя.<br>Редкий. Почти вымерший вид 🌾</p></div>
+      </div>
+      <div class="gallery-card">
+        <img src="photos/gallery-4.jpg" alt="Зима" loading="lazy" />
+        <div class="gallery-caption"><p>Зима не остановит <br> ❄️</p></div>
+      </div>
+
+      <!-- ── НОВЫЕ ФОТО — заготовки ── -->
+      <!-- Фото 7: назови gallery-7.jpg, положи в папку photos/
+           Подпись: впиши свою или оставь мою -->
+      <div class="gallery-card">
+        <img src="photos/gallery-7.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Красивая. Всегда. Везде. 🌹</p></div>
+      </div>
+
+      <!-- Фото 8: назови gallery-8.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-8.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Моя любимая — в своей стихии ✨</p></div>
+      </div>
+
+      <!-- Фото 9: назови gallery-9.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-9.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Такой её видел только я ❤</p></div>
+      </div>
+
+
+      <!-- Фото 11: назови gallery-11.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-11.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Она и не знает, как это красиво 🌸</p></div>
+      </div>
+
+      <!-- Фото 12: назови gallery-12.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-12.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Вот за это я и влюбился ☕</p></div>
+      </div>
+
+      <!-- Фото 13: назови gallery-13.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-13.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Улыбка, от которой всё хорошо 😊</p></div>
+      </div>
+
+      <!-- Фото 14: назови gallery-14.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-14.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Лучший вид на свете — это она 🌹</p></div>
+      </div>
+
+      <!-- Фото 15: назови gallery-15.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-15.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>37 лет — и с каждым годом лучше ✨</p></div>
+      </div>
+	  
+      <!-- Фото 10: назови gallery-10.jpg, положи в папку photos/ -->
+      <div class="gallery-card">
+        <img src="photos/gallery-10.jpg" alt="Люба" loading="lazy"
+             onerror="this.parentElement.style.display='none'" />
+        <div class="gallery-caption"><p>Непредсказуемая. 💕</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 5.5 — ПЛЕЙЛИСТ
+══════════════════════════════════════════
+<section id="playlist">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">Саундтрек к нам</p>
+      <h2 class="section-title">Плейлист для тебя</h2>
+      <p class="playlist-intro">Пять песен, в которых живёт что-то наше</p>
+    </div>
+
+    <div class="playlist-grid reveal"> -->
+
+      <!-- Скрытый аудио-элемент 
+      <audio id="playlist-audio" preload="none"></audio>
+
+      <div class="track" data-src="audio/track-01.mp3">
+        <button class="track-play" data-idx="0" aria-label="Играть">▶</button>
+        <span class="track-num">01</span>
+        <div class="track-info">
+          <p class="track-title">«Та, которая всегда права»</p>
+          <p class="track-artist">— наша утренняя кофейная тема</p>
+        </div>
+        <span class="track-time">3:37</span>
+      </div>
+
+      <div class="track" data-src="audio/track-02.mp3">
+        <button class="track-play" data-idx="1" aria-label="Играть">▶</button>
+        <span class="track-num">02</span>
+        <div class="track-info">
+          <p class="track-title">«Потом-потом (extended mix)»</p>
+          <p class="track-artist">— гимн твоему фирменному стилю жизни</p>
+        </div>
+        <span class="track-time">∞:∞∞</span>
+      </div>
+
+      <div class="track" data-src="audio/track-03.mp3">
+        <button class="track-play" data-idx="2" aria-label="Играть">▶</button>
+        <span class="track-num">03</span>
+        <div class="track-info">
+          <p class="track-title">«2 700 километров до твоего голоса»</p>
+          <p class="track-artist">— баллада, которую я слушаю каждое утро</p>
+        </div>
+        <span class="track-time">4:21</span>
+      </div>
+
+      <div class="track" data-src="audio/track-04.mp3">
+        <button class="track-play" data-idx="3" aria-label="Играть">▶</button>
+        <span class="track-num">04</span>
+        <div class="track-info">
+          <p class="track-title">«Острый перец и слёзы счастья»</p>
+          <p class="track-artist">— для ужинов, где «нет, ещё не остро»</p>
+        </div>
+        <span class="track-time">2:58</span>
+      </div>
+
+      <div class="track" data-src="audio/track-05.mp3">
+        <button class="track-play" data-idx="4" aria-label="Играть">▶</button>
+        <span class="track-num">05</span>
+        <div class="track-info">
+          <p class="track-title">«Зайка, иди сюда»</p>
+          <p class="track-artist">— главный трек на каждое 29 мая. Навсегда.</p>
+        </div>
+        <span class="track-time">5:29</span>
+      </div>
+
+    </div>
+  </div>
+</section>  -->
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 6 — ТЕСТ
+══════════════════════════════════════════ -->
+<section id="quiz">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">Интерактивная игра</p>
+      <h2 class="section-title">Факты о Любе</h2>
+      <p class="quiz-intro">Ты думаешь, что знаешь себя? Проверим! 😄</p>
+    </div>
+
+    <div class="quiz-box reveal">
+      <div id="quiz-content">
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-bar" id="quiz-progress" style="width:0%"></div>
+        </div>
+        <p class="quiz-q-num" id="quiz-q-num">Вопрос 1 из 9</p>
+        <p class="quiz-question" id="quiz-question"></p>
+        <div class="quiz-options" id="quiz-options"></div>
+        <p class="quiz-feedback" id="quiz-feedback"></p>
+        <button class="quiz-next-btn" id="quiz-next">Следующий вопрос →</button>
+      </div>
+
+      <div class="quiz-result" id="quiz-result">
+        <div class="result-emoji" id="result-emoji">🏆</div>
+        <h3 class="result-title" id="result-title"></h3>
+        <p class="result-diagnosis" id="result-diagnosis"></p>
+        <span class="result-score" id="result-score"></span>
+
+        <div class="quiz-video-reveal" id="quiz-video-reveal">
+          <p class="video-label">🎁 Твой приз за прохождение теста!</p>
+          <div class="video-frame">
+            <video controls playsinline preload="metadata">
+              <source src="video/video2.mp4" type="video/mp4">
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 7 — 37 ПРИЧИН
+══════════════════════════════════════════ -->
+<section id="reasons">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label" style="color:var(--gold)"> </p>
+      <h2 class="section-title">37 причин,<br>почему я тебя люблю</h2>
+      <p class="reasons-intro">Нажимай на каждую карточку — она перевернётся 💕</p>
+    </div>
+
+    <div class="reasons-portrait reveal">
+      <img src="photos/hero-2.jpg" alt="Люба" loading="lazy" />
+      <p class="reasons-portrait-caption">Сильная. Красивая. Моя.</p>
+    </div>
+
+    <div class="reasons-grid reveal" id="reasons-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     СЕКЦИЯ 8 — ФИНАЛ
+══════════════════════════════════════════ -->
+<section id="finale">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label">С любовью из Украины</p>
+      <h2 class="section-title">С Днём Рождения,<br>моя Зайка!</h2>
+    </div>
+
+    <div class="finale-cake reveal">
+      <img src="photos/finale.jpg" alt="Торт на день рождения" loading="lazy" />
+    </div>
+	
+	<div class="finale-text reveal">
+      <p>
+        Это не просто поздравление. Это <strong><em>2 700 километров абсолютной, концентрированной любви</em></strong>, которая пробивается сквозь любые часовые пояса, расстояния и границы прямо к тебе. Ты сейчас в Валенсии, я дома в Одессе, но закрой на секунду глаза — и ты почувствуешь, как крепко я тебя обнимаю.
+      </p>
+      <p>
+        Пусть твои <strong>37</strong> станут невероятным годом, когда сбывается то, о чём ты тихонько молчишь перед сном. Будь такой же стильной, дерзкой, упрямой и умопомрачительно красивой. Смейся так громко и счастливо, чтобы в Испании думали, что это ласковый шум океана.
+      </p>
+      <p>
+        И пусть твой утренний кофе никогда не остывает, новые изящные вазы всегда находят своё идеальное место в доме, а жизнь подкидывает только те сюрпризы, от которых перехватывает дыхание.
+      </p>
+      <p class="finale-epic" style="font-size: 1.3rem; font-weight: bold; color: var(--gold); margin-top: 25px;">Я люблю тебя. Каждой деталью своей души, каждой секундой нашей истории. Жду. Целую. И безумно скучаю. ❤</p>
+    </div>
+
+  <!--  <div class="finale-text reveal">
+      <p>
+        Этот сайт — не просто поздравление. Это <em>2 700 км любви</em>,
+        упакованных в экран твоего телефона. Ты сейчас в Валенсии,
+        я дома — но в этот момент мы вместе.
+      </p>
+      <p>
+        Пусть твои <em>37</em> будут такими же яркими, как ты сама.
+        Такими же упрямыми, как твой характер. Такими же горячими,
+        как тот перец, который ты кладёшь в любое блюдо.
+      </p>
+      <p>
+        И пусть кофе всегда будет налит. Цветы — подарены.
+        А «потом-потом» — никогда не случается с тем, что действительно важно.
+      </p>
+      <p>Я тебя люблю. Жду. Целую. ❤</p>
+    </div>  -->
+
+    <!-- ─ Обещание ─ -->
+   <!-- <div class="promise reveal">
+      <p class="promise-label">Обещаю</p>
+      <p class="promise-text">
+        Встречу в аэропорту. С розами. С кофе.<br>
+        С самым глупым лицом самого счастливого мужа на свете.
+      </p>
+    </div>-->
+
+    <div class="finale-sign reveal">Твой Максим</div>
+
+    <div class="reveal" style="text-align:center">
+      <p class="thanks-label">Цем ❤</p>
+      <div class="thanks-btns">
+      <!--  <a href="tg://call?to=+380638939356" class="thanks-btn thanks-tg">
+		<a href="https://t.me/+380638939356" class="thanks-btn thanks-tg">-->
+		<a href="tg://resolve?domain=Maksim_Krohmal" class="thanks-btn thanks-tg" target="_blank">
+          <span class="thanks-btn-icon">✈️</span>
+          <span class="thanks-btn-text">Спасибо</span>
+          <!-- <span class="thanks-btn-sub">через Telegram</span> -->
+        </a>
+        <a href="viber://chat?number=%2B380638939356" class="thanks-btn thanks-vb">
+          <span class="thanks-btn-icon">💬</span>
+          <span class="thanks-btn-text">Спасибо</span>
+          <!-- <span class="thanks-btn-sub">через Viber</span> -->
+        </a>
+      </div>
+	  
+    <!-- ─ Капсула времени ─ -->
+    <div class="capsule reveal">
+      <div class="capsule-head">
+        <span class="capsule-icon">⏳</span>
+        <h3 class="capsule-title">Капсула времени · откроется 29 мая 2027</h3>
+      </div>
+      <p class="capsule-sub">Напиши себе одно желание на 38 лет. Появится ровно через год.</p>
+
+      <div id="capsule-form">
+        <textarea id="capsule-input" placeholder="Дорогая 38-летняя я, хочу пожелать тебе..."></textarea>
+        <button id="capsule-save">Запечатать капсулу 🔒</button>
+      </div>
+
+      <div id="capsule-locked" class="capsule-state">
+        <p class="capsule-state-icon">🔒</p>
+        <p>Капсула запечатана.</p>
+        <p class="capsule-meta" id="capsule-locked-meta"></p>
+        <button id="capsule-reset" class="capsule-link">переписать</button>
+      </div>
+
+      <div id="capsule-open" class="capsule-state">
+        <p class="capsule-state-icon">💌</p>
+        <p>Год прошёл. Послание от тебя-прошлой:</p>
+        <blockquote id="capsule-message"></blockquote>
+      </div>
+    </div>
+
+    <div class="finale-flowers reveal">🌹🌸🌹🌸🌹</div>
+  </div>
+</section>
+
+<!-- Слой падающих лепестков для 37 причин -->
+<div id="petal-layer"></div>
+
+<script src="js/main.js"></script>
+<script>
+// ── 37 ПРИЧИН ──────────────────────────────
+const reasons = [
+  { n: 1,  text: "Потому что ты умеешь любить так глубоко и искренне, как никто другой на этой планете." },
+  { n: 2,  text: "За твою упрямость. Это не просто характер, это невероятная сила, которая меняет реальность вокруг тебя." },
+  { n: 3,  text: "За то, что твоё очаровательное «потом-потом» в итоге всегда превращается в шедевр." },
+  { n: 4,  text: "Потому что рядом с тобой не бывает серых будней. С тобой каждый день — это маленькое событие." },
+  { n: 5,  text: "За то, как загораются твои глаза, когда ты видишь охапку свежих цветов (обещаю, они будут радовать тебя гораздо чаще!) 🌹" },
+  { n: 6,  text: "Потому что твоя железная целеустремлённость и вера в успех восхищают меня каждый день." },
+  { n: 7,  text: "Потому что ты способна превратить любое блюдо в кулинарный праздник." },
+  { n: 8,  text: "За твою трогательную заботу, которую ты проявляешь даже в самых незаметных мелочах." },
+  { n: 9,  text: "Потому что ты бываешь невероятно нежной и хрупкой." },
+  { n: 10, text: "За то, с каким священным трепетом и любовью ты создавала нашу свадьбу." },
+  { n: 11, text: "За твой легендарный девиз «всруся, но не покорюся». Это лучшее и самое вдохновляющее описание сильной женщины!" },
+  { n: 12, text: "Потому что рядом с тобой мир обретает яркие краски, контрастность и глубокий смысл." },
+  { n: 13, text: "За то, с каким неподдельным удовольствием ты делаешь первый глоток утреннего горячего кофе." },
+  { n: 14, text: "Потому что ты обладаешь редким даром — искренне радоваться простым маленьким вещам." },
+  { n: 15, text: "Потому что твои болградские корни подарили тебе этот уникальный, завораживающий колорит." },
+  { n: 16, text: "Потому что даже когда ты начинаешь вредничать, ты остаёшься моей самой любимой девочкой." },
+  { n: 17, text: "За твой фантастический трудоголизм. Ты горишь своим делом так ярко, что авиация действительно тихо отдыхает в сторонке." },
+  { n: 18, text: "Потому что ты умеешь создавать неповторимый уют и тепло абсолютно везде, где бы ты ни находилась." },
+  { n: 19, text: "Потому что твоя искренняя улыбка — это лучшее и самое дорогое зрелище, которое я видел в своей жизни." },
+  { n: 20, text: "Потому что мы прошли вместе уже 8 лет, а я ловлю себя на мысли, что влюбляюсь в тебя всё сильнее." },
+  { n: 21, text: "За то что ..." },
+  { n: 22, text: "За твою внутреннюю стойкость, умение держать удар и оставаться королевой в любых ситуациях." },
+  { n: 23, text: "Потому что ты вся — острое, солёное, пряное и безумно притягательное пламя, прямо как твой характер." },
+  { n: 24, text: "За то, что ты умеешь находить невероятные вазы и сумки, которые магическим образом делают наш дом особенным." },
+  { n: 25, text: "Потому что ты главная муза в моей жизни." },
+  { n: 26, text: "Потому что твоя красота завораживает, и мне безумно приятно осознавать, что ты — моя женщина." },
+  { n: 27, text: "За редкие, но такие ценные моменты, когда ты полностью открываешь мне свою ласковую душу." },
+  { n: 28, text: "Потому что само понятие «дом» теперь для меня привязано не к стенам, а исключительно к твоему голосу." },
+  { n: 29, text: "Потому что 29 мая — отныне и навсегда самый лучший, самый главный и праздничный день в моём календаре." },
+  { n: 30, text: "За твоё умение великодушно прощать меня, даже когда я не виноват." },
+  { n: 31, text: "Потому что ты — это абсолютный оригинал. В мире нет ни одной точной копии твоей многогранной души." },
+  { n: 32, text: "Потому что благодаря твоей любви, вере и поддержке я стал намного лучше, сильнее и увереннее." },
+  { n: 33, text: "За твою несокрушимую внутреннюю силу. Ты никогда, ни при каких обстоятельствах не опускаешь руки." },
+  { n: 34, text: "Потому что даже за тысячи километров, в солнечной Валенсии, ты остаёшься моей упрямой, родной Зайкой." },
+  { n: 35, text: "Потому что само слово «любовь» ассоциируется у меня исключительно с тобой." },
+  { n: 36, text: "Потому что твои прекрасные 37 лет — это лишь потрясающее, интригующее начало нашей новой главы." },
+  { n: 37, text: "Потому что я люблю тебя. Без условий, без причин, просто за то, что ты есть в этой вселенной. Навсегда. ❤" },
+];
+
+const grid = document.getElementById('reasons-grid');
+reasons.forEach(r => {
+  const card = document.createElement('div');
+  card.className = 'reason-card';
+  card.innerHTML = `
+    <div class="reason-inner">
+      <div class="reason-face reason-front">
+        <div class="reason-num">${r.n}</div>
+        <span class="reason-hint">нажми</span>
+      </div>
+      <div class="reason-face reason-back">
+        <p class="reason-text">${r.text}</p>
+      </div>
+    </div>`;
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+    if (card.classList.contains('flipped')) spawnPetals(card);
+  });
+  grid.appendChild(card);
+});
+</script>
+
+<script src="js/enhance.js"></script>
+</body>
+</html>
